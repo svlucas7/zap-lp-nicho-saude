@@ -17,11 +17,31 @@ Use este arquivo para centralizar customizações e facilitar manutenção.
 @layer components {
   /* Botão principal: usado em CTAs e formulários */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-zapGreen px-5 py-3 text-white font-semibold shadow-sm transition-colors duration-200 hover:bg-zapOrange focus:outline-none focus:ring-2 focus:ring-zapGreen/40;
+    @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-white font-semibold shadow-sm transition-colors duration-200 focus:outline-none;
+  /* Gradient primary fallback and visual polish (theme updated) */
+  /* Single-color primary gradient: destaque -> mais escuro */
+  background-image: linear-gradient(135deg, #00974F 0%, #007A44 55%, #066839 100%);
+  background-color: #00974F; /* fallback for environments without gradient */
+  box-shadow: 0 6px 18px rgba(16,110,90,0.06);
+  --tw-ring-color: rgba(16,110,90,0.22);
   }
   /* Botão secundário: usado em ações alternativas */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-lg bg-zapGreen px-4 py-2 text-white font-medium shadow-sm transition-colors duration-200 hover:bg-zapBlue;
+    @apply inline-flex items-center justify-center rounded-lg bg-transparent px-4 py-2 text-zapGray font-medium shadow-sm transition-colors duration-200 border;
+    /* use secondary accent as border by default */
+  border-color: #0D366C;
+  color: #0D366C;
+  }
+  /* hover uses a subtle blend of secondary -> darker to keep visual harmony */
+  .btn-secondary:hover{ background-image: linear-gradient(135deg, #0D366C 0%, #0A2B56 100%); color:#fff; border-color:#0D366C; }
+
+  /* Product badge using the secondary accent */
+  .product-badge {
+    @apply inline-block text-xs font-medium px-2 py-1 rounded-full;
+  /* Single-color primary gradient: destaque -> mais escuro */
+  background-image: linear-gradient(90deg, #00974F 0%, #007A44 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(15,110,90,0.06);
   }
   /* Card: usado para blocos de conteúdo */
   .card {
